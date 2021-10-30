@@ -1,8 +1,9 @@
 import * as React from "react";
+import { Svg } from "./styles";
 
 function Logo(props) {
 	return (
-		<svg
+		<Svg
 			width={385.56}
 			height={124.44}
 			xmlns='http://www.w3.org/2000/svg'
@@ -55,7 +56,7 @@ function Logo(props) {
 				/>
 			</g>
 			<style />
-		</svg>
+		</Svg>
 	);
 }
 
