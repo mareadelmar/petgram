@@ -5,10 +5,14 @@ export const usePhotos = () => {
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
+		setLoading(true);
 		fetch("db.json")
 			.then(res => res.json())
-			.then(data => setCategoryPhotos(data.photos));
+			.then(data => setCategoryPhotos(data.photos))
+			.catch(err => console.error(err))
+			.finally(() => setLoading(false));
 	}, []);
 
-	return { categoryPhotos };
+	console.log(categoryPhotos);
+	return { categoryPhotos, loading };
 };
