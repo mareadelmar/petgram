@@ -1,25 +1,48 @@
 import React, { useState, useEffect } from "react";
 import Category from "../Category";
 import { List, ListItem } from "./styles";
-//import { categories } from "../../../api/db.json";
+import { useCategories } from "../../hooks/useCategories";
 
 const ListOfCategories = () => {
-	const [categories, setCategories] = useState([]);
+	const [showFixed, setShowFixed] = useState(false);
+	const { categories, loading } = useCategories();
 
 	useEffect(() => {
-		fetch("db.json")
-			.then(res => res.json())
-			.then(res => setCategories(res.categories));
-	}, []);
+		const onScroll = e => {
+			// recibe el evento del scroll
+			const newShowFixed = window.scrollY > 200;
+			showFixed !== newShowFixed && setShowFixed(newShowFixed);
+		};
+
+		document.addEventListener("scroll", onScroll);
+
+		return () => {
+			// limpia el evento
+			document.removeEventListener("scroll", onScroll);
+		};
+	}, [showFixed]);
+
+	const renderList = fixed => (
+		<List fixed={fixed}>
+			{loading ? (
+				<ListItem key='loading'>
+					<Category />
+				</ListItem>
+			) : (
+				categories.map(item => (
+					<ListItem key={item.id}>
+						<Category {...item} />
+					</ListItem>
+				))
+			)}
+		</List>
+	);
 
 	return (
-		<List>
-			{categories.map(item => (
-				<ListItem key={item.id}>
-					<Category {...item} />
-				</ListItem>
-			))}
-		</List>
+		<>
+			{renderList()}
+			{showFixed && renderList(true)}
+		</>
 	);
 };
 
