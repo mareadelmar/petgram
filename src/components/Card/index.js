@@ -3,6 +3,7 @@ import { Article, ImgWrapper, Img, Button } from "./styles";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { useNearScreen } from "../../hooks/useNearScreen";
+import { Link } from "react-router-dom";
 
 const DEFAULT_IMAGE =
 	"https://res.cloudinary.com/midudev/image/upload/w_300/q_80/v1560262103/dogs.png";
@@ -20,11 +21,11 @@ const Card = ({ likes = 0, id, src = DEFAULT_IMAGE }) => {
 		<Article ref={ref}>
 			{show && (
 				<>
-					<a href={`/detail/${id}`}>
+					<Link to={`/detail/${id}`}>
 						<ImgWrapper>
 							<Img src={src} alt='' />
 						</ImgWrapper>
-					</a>
+					</Link>
 					<Button
 						type='button'
 						onClick={() => setLocalStorage(!storedValue)}

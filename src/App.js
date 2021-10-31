@@ -7,8 +7,8 @@ function App() {
 	return (
 		<div className='App'>
 			<GlobalStyle />
-			<Header />
 			<BrowserRouter>
+				<Header />
 				<Switch>
 					<Route exact path='/' component={Home} />
 				</Switch>
