@@ -1,15 +1,18 @@
 import { GlobalStyle } from "./styles/GlobalStyles";
-import ListOfCategories from "./components/ListOfCategories";
-import ListOfCards from "./components/ListOfCards";
-import Logo from "./components/Logo";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Home from "./pages/Home";
 
 function App() {
 	return (
 		<div className='App'>
 			<GlobalStyle />
-			<Logo />
-			<ListOfCategories />
-			<ListOfCards />
+			<Header />
+			<BrowserRouter>
+				<Switch>
+					<Route exact path='/' component={Home} />
+				</Switch>
+			</BrowserRouter>
 		</div>
 	);
 }
