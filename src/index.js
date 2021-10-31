@@ -3,6 +3,10 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+//import ApolloClient from "apollo-boost";
+//import { ApolloProvider } from "react-apollo";
+//import { ApolloProvider } from "@apollo/react-hooks";
+//const cliente = new ApolloClient({});
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -12,3 +16,7 @@ ReactDOM.render(
 );
 
 reportWebVitals();
+
+/*
+DEPLOYAR API dsp para tocar graphql
+*/
