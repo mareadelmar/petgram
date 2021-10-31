@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
 import Card from "../Card";
-//import { getGifs } from "../../services/getGifs";
+import { usePhotos } from "../../hooks/usePhotos";
 
-const ListOfCards = () => {
-	const [photos, setPhotos] = useState([]);
+const ListOfCards = ({ categoryId }) => {
+	const { categoryPhotos } = usePhotos();
+	const [photos, setPhotos] = useState(categoryPhotos);
+	console.log(photos, categoryPhotos);
 
 	useEffect(() => {
-		// getGifs()
-		// 	.then(res => console.log(res))
-		// 	.catch(err => console.error(err));
-
-		fetch("db.json")
-			.then(res => res.json())
-			.then(data => setPhotos(data.photos));
-	}, []);
+		if (categoryId) {
+			const filterPhotos = categoryPhotos.filter(item => {
+				return item.categoryId === Number(categoryId);
+			});
+			setPhotos(filterPhotos);
+		} else {
+			setPhotos(categoryPhotos);
+		}
+	}, [categoryId, categoryPhotos]);
 
 	return (
 		<ul>
 			{photos.map(item => {
-				return <Card key={item} {...item} />;
+				return <Card key={item.id} {...item} />;
 			})}
 		</ul>
 	);

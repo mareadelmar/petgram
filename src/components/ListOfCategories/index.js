@@ -3,7 +3,8 @@ import Category from "../Category";
 import { List, ListItem } from "./styles";
 import { useCategories } from "../../hooks/useCategories";
 
-const ListOfCategories = () => {
+const ListOfCategories = ({ categoryId }) => {
+	console.log(categoryId);
 	const [showFixed, setShowFixed] = useState(false);
 	const { categories, loading } = useCategories();
 
@@ -21,6 +22,11 @@ const ListOfCategories = () => {
 			document.removeEventListener("scroll", onScroll);
 		};
 	}, [showFixed]);
+
+	// useEffect(() => {
+	// 	if (categoryName) {
+	// 	}
+	// }, [categoryName]);
 
 	const renderList = fixed => (
 		<List fixed={fixed}>
