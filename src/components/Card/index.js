@@ -14,9 +14,7 @@ const Card = ({ likes = 0, id, src = DEFAULT_IMAGE }) => {
 
 	// sería mejor llamarlo [liked, setLiked], pero así es más claro
 	const [storedValue, setLocalStorage] = useLocalStorage(false, key);
-
 	const Icon = storedValue ? MdFavorite : MdFavoriteBorder;
-
 	return (
 		<Article ref={ref}>
 			{show && (

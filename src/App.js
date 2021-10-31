@@ -3,6 +3,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
+import NavBar from "./components/NavBar";
+import Favs from "./pages/Favs";
+import User from "./pages/User";
 
 function App() {
 	return (
