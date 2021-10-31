@@ -11,11 +11,14 @@ function App() {
 			<BrowserRouter>
 				<Header />
 				<Switch>
-					<Route exact path='/' component={Home} />
+					<Route path='/favs' component={Favs} />
+					<Route path='/user' component={User} />
 					<Route path='/detail/:id' component={Detail} />
 					<Route path='/pets/:categoryId' component={Home} />
+					<Route exact path='/' component={Home} />
 					{/* <Route path='/category/:id' /> */}
 				</Switch>
+				<NavBar />
 			</BrowserRouter>
 		</div>
 	);
