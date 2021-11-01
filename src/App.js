@@ -7,10 +7,11 @@ import NavBar from "./components/NavBar";
 import Favs from "./pages/Favs";
 import User from "./pages/User";
 import PublicRoute from "./pages/PublicRoute";
+import AuthContext from "./context/AuthContext";
 
-const UserLogged = ({ children }) => {
-	return children({ isAuth: false });
-};
+// const UserLogged = ({ children }) => {
+// 	return children({ isAuth: false });
+// };
 
 function App() {
 	return (
@@ -23,7 +24,7 @@ function App() {
 					<Route path='/pets/:categoryId' component={Home} />
 					<Route exact path='/' component={Home} />
 
-					<UserLogged>
+					<AuthContext.Consumer>
 						{({ isAuth }) =>
 							isAuth ? (
 								<Switch>
@@ -43,7 +44,7 @@ function App() {
 								</Switch>
 							)
 						}
-					</UserLogged>
+					</AuthContext.Consumer>
 
 					{/* <Route path='/category/:id' /> */}
 				</Switch>

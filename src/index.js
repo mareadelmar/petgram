@@ -7,10 +7,13 @@ import reportWebVitals from "./reportWebVitals";
 //import { ApolloProvider } from "react-apollo";
 //import { ApolloProvider } from "@apollo/react-hooks";
 //const cliente = new ApolloClient({});
+import AuthContext from "./context/AuthContext";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<AuthContext.Provider>
+			<App />
+		</AuthContext.Provider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );
