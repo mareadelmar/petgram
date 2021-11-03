@@ -6,16 +6,18 @@ import { Container } from "./styles";
 
 const Detail = () => {
 	const { id } = useParams();
-	const { categoryPhotos, loading } = usePhotos();
+	//const { categoryPhotos, loading } = usePhotos();
 	//const [cardData, setCardData] = useState({});
 	// Recuperar la card con el id del context
+	const { photos } = usePhotos();
+	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
 		//console.log(typeof id);
 		//console.log(categoryPhotos, loading);
 
-		if (!loading) {
-			console.log(categoryPhotos);
+		if (photos) {
+			console.log(photos);
 			console.log("holis");
 		}
 
@@ -29,7 +31,7 @@ const Detail = () => {
 
 		// 	console.log(bla);
 		// }
-	}, [categoryPhotos, id, loading]);
+	}, [id, photos]);
 
 	//if (showLoader) return <p>Cargando...</p>;
 	return (
