@@ -28,12 +28,13 @@ const Detail = () => {
 
 		// 	console.log(bla);
 		// }
-	}, [categoryPhotos, id, loading]);
+	}, [categoryPhotos, id, getSinglePhoto, showLoader]);
 
+	if (showLoader) return <p>Cargando...</p>;
 	return (
-		<div>
+		<Container>
 			<Card />
-		</div>
+		</Container>
 	);
 };
 

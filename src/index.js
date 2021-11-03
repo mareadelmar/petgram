@@ -3,16 +3,15 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-//import ApolloClient from "apollo-boost";
-//import { ApolloProvider } from "react-apollo";
-//import { ApolloProvider } from "@apollo/react-hooks";
-//const cliente = new ApolloClient({});
 import { AuthContextProvider } from "./context/AuthContext";
+import { PhotosContextProvider } from "./context/PhotosContext";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<AuthContextProvider>
-			<App />
+			<PhotosContextProvider>
+				<App />
+			</PhotosContextProvider>
 		</AuthContextProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
