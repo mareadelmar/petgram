@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Header from "./components/Header";
@@ -14,6 +15,7 @@ import AuthContext from "./context/AuthContext";
 // };
 
 function App() {
+	//const { isAuth } = useContext(AuthContext);
 	return (
 		<div className='App'>
 			<GlobalStyle />
