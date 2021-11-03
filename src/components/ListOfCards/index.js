@@ -3,24 +3,24 @@ import Card from "../Card";
 import { usePhotos } from "../../hooks/usePhotos";
 
 const ListOfCards = ({ categoryId }) => {
-	const { categoryPhotos } = usePhotos();
-	const [photos, setPhotos] = useState(categoryPhotos);
-	console.log(photos, categoryPhotos);
+	const { photos } = usePhotos();
+	const [filterPhotos, setFilterPhotos] = useState(photos);
+	console.log(photos);
 
 	useEffect(() => {
 		if (categoryId) {
-			const filterPhotos = categoryPhotos.filter(item => {
+			const filterPhotos = photos.filter(item => {
 				return item.categoryId === Number(categoryId);
 			});
-			setPhotos(filterPhotos);
+			setFilterPhotos(filterPhotos);
 		} else {
-			setPhotos(categoryPhotos);
+			setFilterPhotos(photos);
 		}
-	}, [categoryId, categoryPhotos]);
+	}, [categoryId, photos]);
 
 	return (
 		<ul>
-			{photos.map(item => {
+			{filterPhotos.map(item => {
 				return <Card key={item.id} {...item} />;
 			})}
 		</ul>

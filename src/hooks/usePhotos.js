@@ -1,18 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import PhotosContext from "../context/PhotosContext";
 
 export const usePhotos = () => {
-	const [categoryPhotos, setCategoryPhotos] = useState([]);
+	//const [categoryPhotos, setCategoryPhotos] = useState([]);
+	const { photos, setPhotos } = useContext(PhotosContext);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		setLoading(true);
 		fetch("db.json")
 			.then(res => res.json())
-			.then(data => setCategoryPhotos(data.photos))
+			.then(data => {
+				setPhotos(data.photos);
+			})
 			.catch(err => console.error(err))
 			.finally(() => setLoading(false));
-	}, []);
+	}, [setPhotos]);
 
-	console.log(categoryPhotos);
-	return { categoryPhotos, loading };
+	console.log(photos);
+	return { photos, loading };
 };
