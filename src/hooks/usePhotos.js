@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import PhotosContext from "../context/PhotosContext";
 
 export const usePhotos = () => {
-	//const [categoryPhotos, setCategoryPhotos] = useState([]);
 	const { photos, setPhotos } = useContext(PhotosContext);
 	const [loading, setLoading] = useState(false);
 
@@ -17,6 +16,5 @@ export const usePhotos = () => {
 			.finally(() => setLoading(false));
 	}, [setPhotos]);
 
-	console.log(photos);
 	return { photos, loading };
 };

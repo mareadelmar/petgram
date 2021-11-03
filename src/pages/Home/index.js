@@ -5,7 +5,6 @@ import { useParams } from "react-router";
 
 const Home = () => {
 	const { categoryId } = useParams();
-	console.log(categoryId);
 	return (
 		<>
 			<ListOfCategories />

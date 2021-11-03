@@ -9,21 +9,18 @@ import Favs from "./pages/Favs";
 import User from "./pages/User";
 import PublicRoute from "./pages/PublicRoute";
 import AuthContext from "./context/AuthContext";
-import PhotosContext from "./context/PhotosContext";
 // const UserLogged = ({ children }) => {
 // 	return children({ isAuth: false });
 // };
 
 function App() {
 	const { isAuth } = useContext(AuthContext);
-	const { photos } = useContext(PhotosContext);
 
 	console.log(isAuth);
 	return (
 		<div className='App'>
 			<GlobalStyle />
 			<BrowserRouter>
-				{photos.length}
 				<Header />
 				<Switch>
 					<Route path='/detail/:id' component={Detail} />
@@ -41,8 +38,6 @@ function App() {
 							<Route path='/user' component={PublicRoute} />
 						</Switch>
 					)}
-
-					{/* <Route path='/category/:id' /> */}
 				</Switch>
 				<NavBar />
 			</BrowserRouter>

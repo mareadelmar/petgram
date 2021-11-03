@@ -6,37 +6,22 @@ import { Container } from "./styles";
 
 const Detail = () => {
 	const { id } = useParams();
-	//const { categoryPhotos, loading } = usePhotos();
-	//const [cardData, setCardData] = useState({});
-	// Recuperar la card con el id del context
+	const [cardData, setCardData] = useState({});
 	const { photos } = usePhotos();
-	const [loading, setLoading] = useState(true);
+	const [loader, setLoader] = useState(true);
 
 	useEffect(() => {
-		//console.log(typeof id);
-		//console.log(categoryPhotos, loading);
-
 		if (photos) {
-			console.log(photos);
-			console.log("holis");
+			const data = photos.find(item => item.id === Number(id));
+			setCardData(data);
+			setLoader(false);
 		}
-
-		// if (!loading && categoryPhotos.length > 0) {
-		// 	const bla = categoryPhotos.filter(item => {
-		// 		console.log("id", typeof id);
-		// 		console.log("item.id", typeof item.id);
-		// 		console.log(item.id === Number(id));
-		// 		return item.id === Number(id);
-		// 	});
-
-		// 	console.log(bla);
-		// }
 	}, [id, photos]);
 
-	//if (showLoader) return <p>Cargando...</p>;
+	if (loader) return <p>Cargando...</p>;
 	return (
 		<Container>
-			<Card />
+			<Card {...cardData} />
 		</Container>
 	);
 };
