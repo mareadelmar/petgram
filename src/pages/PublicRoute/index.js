@@ -3,16 +3,31 @@ import AuthContext from "../../context/AuthContext";
 import LoginForm from "../../components/LoginForm";
 
 const PublicRoute = () => {
-	const { isAuth } = useContext(AuthContext);
+	const { isAuth, activateAuth } = useContext(AuthContext);
+
+	// simulación de inicio de sesión
 	const loading = false; // request state
 
 	console.log("PUBLIC ROUTE", isAuth);
 
-	// pasarle a cada uno el handleSubmit
+	const handleSubmit = e => {
+		e.preventDefault();
+		const token = true;
+		activateAuth(token);
+	};
+
 	return (
 		<>
-			<LoginForm title='Registrarse' disabled={loading} />
-			<LoginForm title='Iniciar sesión' disabled={loading} />
+			<LoginForm
+				title='Registrarse'
+				disabled={loading}
+				handleSubmit={handleSubmit}
+			/>
+			<LoginForm
+				title='Iniciar sesión'
+				disabled={loading}
+				handleSubmit={handleSubmit}
+			/>
 		</>
 	);
 };

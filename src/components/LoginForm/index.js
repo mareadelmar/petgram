@@ -8,12 +8,12 @@ const useInputValue = initialValue => {
 	return { value, onChange };
 };
 
-const LoginForm = ({ title, disabled }) => {
+const LoginForm = ({ title, disabled, handleSubmit }) => {
 	const email = useInputValue("");
 	const password = useInputValue("");
 
 	return (
-		<Form disabled={disabled}>
+		<Form disabled={disabled} onSubmit={handleSubmit}>
 			<Title>{title}</Title>
 			<Input
 				type='text'
