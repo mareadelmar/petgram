@@ -12,6 +12,9 @@ export const Input = styled.input`
 	display: block;
 	width: 100%;
 	margin: 16px 0;
+	&[disabled] {
+		opacity: 0.5;
+	}
 `;
 
 export const Button = styled.button`
@@ -25,6 +28,9 @@ export const Button = styled.button`
 	cursor: pointer;
 	font-size: 16px;
 	font-weight: bolder;
+	&[disabled] {
+		opacity: 0.3;
+	}
 `;
 
 export const Title = styled.h2`

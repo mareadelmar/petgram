@@ -8,16 +8,26 @@ const useInputValue = initialValue => {
 	return { value, onChange };
 };
 
-const LoginForm = ({ title }) => {
+const LoginForm = ({ title, disabled }) => {
 	const email = useInputValue("");
 	const password = useInputValue("");
 
 	return (
-		<Form>
+		<Form disabled={disabled}>
 			<Title>{title}</Title>
-			<Input type='text' placeholder='Email' {...email} />
-			<Input type='password' placeholder='Password' {...password} />
-			<Button>{title}</Button>
+			<Input
+				type='text'
+				placeholder='Email'
+				{...email}
+				disabled={disabled}
+			/>
+			<Input
+				type='password'
+				placeholder='Password'
+				{...password}
+				disabled={disabled}
+			/>
+			<Button disabled={disabled}>{title}</Button>
 		</Form>
 	);
 };
