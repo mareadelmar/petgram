@@ -5,11 +5,13 @@ import LoginForm from "../../components/LoginForm";
 const PublicRoute = () => {
 	const { isAuth } = useContext(AuthContext);
 	console.log("PUBLIC ROUTE", isAuth);
+
+	// pasarle a cada uno el handleSubmit
 	return (
-		<div>
-			not register user
-			<LoginForm />
-		</div>
+		<>
+			<LoginForm title='Registrarse' />
+			<LoginForm title='Iniciar sesión' />
+		</>
 	);
 };
 
