@@ -31,7 +31,7 @@ function App() {
 					{isAuth && <Redirect from='/login' to='/' />}
 					<Route path='/favs' component={Favs} />
 					<Route path='/user' component={User} />
-					<Route path='/:rest*' component={NotFound} />
+					<Route component={NotFound} />
 				</Switch>
 				<NavBar />
 			</BrowserRouter>
