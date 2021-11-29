@@ -1,26 +1,23 @@
-import { useContext } from "react";
+import React, { useContext, Suspense } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import Detail from "./pages/Detail";
 import NavBar from "./components/NavBar";
-import Favs from "./pages/Favs";
-import User from "./pages/User";
 import PublicRoute from "./pages/PublicRoute";
 import AuthContext from "./context/AuthContext";
 import NotFound from "./pages/NotFound";
 
-// const UserLogged = ({ children }) => {
-// 	return children({ isAuth: false });
-// };
+const Detail = React.lazy(() => import("./pages/Detail"));
+const Favs = React.lazy(() => import("./pages/Favs"));
+const User = React.lazy(() => import("./pages/User"));
 
 function App() {
 	const { isAuth } = useContext(AuthContext);
 
 	console.log(isAuth);
 	return (
-		<div className='App'>
+		<Suspense fallback={() => <div />}>
 			<GlobalStyle />
 			<BrowserRouter>
 				<Header />
@@ -38,7 +35,7 @@ function App() {
 				</Switch>
 				<NavBar />
 			</BrowserRouter>
-		</div>
+		</Suspense>
 	);
 }
 
