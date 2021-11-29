@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
@@ -26,18 +26,11 @@ function App() {
 					<Route path='/detail/:id' component={Detail} />
 					<Route path='/pets/:categoryId' component={Home} />
 					<Route exact path='/' component={Home} />
-
-					{isAuth ? (
-						<Switch>
-							<Route path='/favs' component={Favs} />
-							<Route path='/user' component={User} />
-						</Switch>
-					) : (
-						<Switch>
-							<Route path='/favs' component={PublicRoute} />
-							<Route path='/user' component={PublicRoute} />
-						</Switch>
-					)}
+					{!isAuth && <Route path='/login' component={PublicRoute} />}
+					{!isAuth && <Redirect from='/favs' to='/login' />}
+					{!isAuth && <Redirect from='/user' to='/login' />}
+					<Route path='/favs' component={Favs} />
+					<Route path='/user' component={User} />
 				</Switch>
 				<NavBar />
 			</BrowserRouter>

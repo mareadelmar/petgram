@@ -23,3 +23,10 @@ export const AuthContextProvider = ({ children }) => {
 };
 
 export default AuthContext;
+
+/**
+ * export default {
+ * 	Provider,
+ * 	Consumer: Context.Consumer
+ * }
+ */
